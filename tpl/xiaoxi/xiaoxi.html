@@ -16,7 +16,7 @@
             <{if $row.xiaoxi}>
             <div class="groupB_qty">
             <{if $row.xiaoxi.content_type==0}>
-            <{$row.xiaoxi.from_name}> : <{$row.xiaoxi.content}>
+            <{$row.xiaoxi.from_name}> : <{$row.xiaoxi.content|truncate:18}>
             <{else}>
             <{$row.xiaoxi.from_name}>发了一张图片
             <{/if}>
@@ -44,7 +44,7 @@
             </div>
             <div class="groupB_qty">
             <{if $row.content_type==0}>
-            <{$row.content}>
+            <{$row.content|truncate:18}>
             <{else}>
                               您收到一条消息
             <{/if}>
