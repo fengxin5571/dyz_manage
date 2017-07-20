@@ -226,4 +226,23 @@ if ($do == "userinfo") { // 用户中心个人信息
     smarty_cfg($smt);
     $smt->assign('store_list', $store_list);
     $smt->display('store_list.html');
+}elseif($do=='userinfo'){//获取用户个人信息
+    if(empty($uid)){
+        echo '{"code":"500","msg":"关键数据缺失"}';
+        exit();
+    }
+    $userinfo= json_encode($db->select(0, 1, 'rv_user','*',array("id=$uid")));
+   // var_dump($userinfo);
+    $sql="select a.name,a.sex,a.head_img,a.mobile,a.roleid,b.name as mdname from rv_user as a join rv_mendian as b on a.id=b.uid where 1=1 and a.id=?";
+    $db->p_e($sql, array(
+        $uid
+    ));
+    $info=json_encode($db->fetchAll());
+    if(!empty($info) && !empty($userinfo)){
+        echo '{"code":"200","info":"'.$info.'","userinfo":"'.$userinfo.'"}';
+        exit();
+    }else{
+        echo '{"code":"500"}';
+        exit();
+    }
 }
