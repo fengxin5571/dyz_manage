@@ -96,4 +96,30 @@ if ($do == "xiaoxi") {
     $smt->assign('total', $total);
     $smt->display('xiaoxi.html');
     exit();
+}elseif($do=='deletexiaoxi'){
+    $uid=$_REQUEST['uid'];
+    $toid=$_REQUEST['toid'];    
+   $sql="delete from rv_xiaoxi where 1=1 and uid=? and toid=?";
+   if($db->p_e($sql, array(
+        $uid,
+        $toid,
+    ))){
+      echo '{"code":"200","msg":"删除聊天记录成功"}';
+      exit();
+   }
+   echo '{"code":"500"}';exit();
+   
+}elseif($do=='deleteqlxx'){
+    $from_uid=$_REQUEST['from_uid'];
+    $togid=$_REQUEST['togid'];
+    $sql="delete from rv_groups_xiaoxi where 1=1 and from_uid=? and togid=?";
+    if($db->p_e($sql, array(
+        $from_uid,
+        $togid
+    ))){
+        echo '{"code":"200","msg":"删除群聊天记录成功"}';
+        exit();
+    }
+    echo '{"code":"500"}';
+    exit();
 }
