@@ -21,7 +21,7 @@ $new_file_names = date("YmdHis") . '_' . mt_rand(100, 999) . '.jpg';
 // 移动缩略图文件
 $file_path_s = $dir_name . $new_file_names;
 $file_url_s = $save_url . $new_file_names;
-
+file_put_contents('e:/error67.txt', $file_path_s);
 $fp=fopen($file_path_s, "w");//打开缩略图文件流
 fwrite($fp, $IMG);
 fclose($fp);
@@ -137,7 +137,7 @@ if ($do == 'fasixin_img') {
         $file_url_s=$_REQUEST['pic_path'];
     }
 
-    $sql="select content_s_img from rv_groups_xiaoxi where 1=1 and from_uid=? order by addtime desc limit 1";
+    $sql="select content_s_img from rv_groups_xiaoxi where 1=1 and from_uid=? order by addtime1 desc limit 1";
     $db->p_e($sql,array($uid));
     $s_img=$db->fetchRow();
     $s_img=$s_img['content_s_img'];
@@ -164,7 +164,7 @@ if ($do == 'fasixin_img') {
         "groups_room"=>$groups_room
     );
     $cont = json_encode($cont);
-    
+
     if($img==$s_img){
         if($db->update(0, 1, "rv_groups_xiaoxi", array(
             "content='$y_img'"

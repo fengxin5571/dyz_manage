@@ -16,7 +16,7 @@ if ($do == "add_groups") {
         )); // 将自己加入到群组数组中
         $ug_id = $db->insert(0, 2, "rv_users_groups", array(
             "ug_admin_id = $admin_id",
-            "ug_create_time=$time"
+            "ug_create_time1=$time"
         )); // 如果插入成功，则返回群组id
         if ($ug_id) { // 如果创建群聊成功，则往群成员表插入群成员
             $sql = "INSERT INTO rv_group_to_users(gu_gid,gu_uid,gu_group_nick) VALUES";

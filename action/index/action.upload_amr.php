@@ -57,7 +57,6 @@ if($do == "send_voice"){//发送语音（单聊）
 }elseif ($do == "send_voice_groups"){//发送语音群聊
     if($upload_flag){
         $uid = $_REQUEST['uid'];
-        file_put_contents('e:/error68.txt', $uid);
         $gid = $_REQUEST['gid'];
         $groups_room = $_REQUEST['groups_room'];
         $amr = $file_url;

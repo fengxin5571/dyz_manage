@@ -167,11 +167,11 @@ if ($do == "xiaoxi") {
             $groups['ug_id']
         ));
         $from_xiaoxi = $db->fetchRow();
-        $from_xiaoxi['addtime1']=date('m月d日',$from_xiaoxi['addtime1']);
         if ($groups['ug_admin_id'] == $uid) { // 如果是群主时 不管有无消息显示群聊信息
             $groups['admin'] = 1;
         }
         if ($from_xiaoxi) { // 有消息时
+            $from_xiaoxi['addtime1']=date('m月d日',$from_xiaoxi['addtime1']);
             $groups['xiaoxi'] = $from_xiaoxi;
             $at_user_ids = json_decode($from_xiaoxi['at_user_ids']);
             foreach ($at_user_ids as $at_uid) {
